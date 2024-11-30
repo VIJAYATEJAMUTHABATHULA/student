@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .search-container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-container input,
+        .search-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background: #e8f4e8;
+            font-size: 1rem;
+            text-align: left;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .search-container {
+                padding: 15px;
+            }
+            .search-container input,
+            .search-container button {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+            .result {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Search</h1>
+    <div class="search-container">
+        <input type="text" id="regNoInput" placeholder="Enter Registration Number">
+        <button onclick="searchStudent()">Search</button>
+        <div id="resultContainer" class="result hidden"></div>
+    </div>
+
+    <script>
+        const studentData = {
+            "69001": { Year: "2", RollNo: "69001", StudentName: "GOPI", FC: "ALYX STAR", Sports: "EXCELLENT", TotalMarks: "64", CATEGORY: "MILF" },
+            "69002": { Year: "2", RollNo: "69002", StudentName: "SRI KRISHNA", FC: "RILEY REID", Sports: "GOOD", TotalMarks: "51", CATEGORY: "AMATEUR" },
+            "69003": { Year: "2", RollNo: "69003", StudentName: "JESWIN", FC: "NATASHA NICE", Sports: "EXCELLENT", TotalMarks: "77", CATEGORY: "BBC" },
+            "69004": { Year: "2", RollNo: "69004", StudentName: "PARDHA SARADHI", FC: "CHERIE DEVILLI", Sports: "AVERAGE", TotalMarks: "47", CATEGORY: "DOUBLE PENETRATION" },
+            "69005": { Year: "2", RollNo: "69005", StudentName: "TARUN", FC: "MIA KHALIFA", Sports: "GOOD", TotalMarks: "53", CATEGORY: "DEEP THROAT" },
+            "69006": { Year: "2", RollNo: "69006", StudentName: "KRISHNA(hockey)", FC: "BRANDI LOVE", Sports: "AVERAGE", TotalMarks: "75", CATEGORY: "69" },
+            "69007": { Year: "2", RollNo: "69007", StudentName: "KESAVA", FC: "ALEXIS FAWX", Sports: "EXCELLENT", TotalMarks: "78", CATEGORY: "STEPMOM" },
+            "69008": { Year: "2", RollNo: "69008", StudentName: "PUJITH", FC: "LANA RHOADES", Sports: "GOOD", TotalMarks: "57", CATEGORY: "THREESOME" },
+            "69009": { Year: "2", RollNo: "69009", StudentName: "HANUMA", FC: "VALENTINE NAPPI", Sports: "EXCELLENT", TotalMarks: "50", CATEGORY: "BLOWJOB" },
+            "69010": { Year: "2", RollNo: "69010", StudentName: "NAVED", FC: "AVA ADAMS", Sports: "GOOD", TotalMarks: "35", CATEGORY: "CREAMPIE" },
+            "69011": { Year: "2", RollNo: "69011", StudentName: "SAMPATH", FC: "VICTORIA JUNE", Sports: "EXCELLENT", TotalMarks: "70", CATEGORY: "CUMSHOT" },
+            "69012": { Year: "2", RollNo: "69012", StudentName: "SRIDHAR", FC: "ELSA JEAN", Sports: "GOOD", TotalMarks: "53", CATEGORY: "LESBIAN" },
+            "69013": { Year: "2", RollNo: "69013", StudentName: "SUMANTH", FC: "SUNNY LEONE", Sports: "EXCELLENT", TotalMarks: "44", CATEGORY: "ARMPIT" },
+            "69014": { Year: "2", RollNo: "69014", StudentName: "DHARMI", FC: "ABELLA DANGER", Sports: "GOOD", TotalMarks: "61", CATEGORY: "BDSM" },
+            "69015": { Year: "2", RollNo: "69015", StudentName: "RAMU", FC: "ANGELA WHITE", Sports: "AVERAGE", TotalMarks: "54", CATEGORY: "BALL BUSTING" }
+        };
+
+        function searchStudent() {
+            const regNo = document.getElementById("regNoInput").value;
+            const resultContainer = document.getElementById("resultContainer");
+
+            if (studentData[regNo]) {
+                const student = studentData[regNo];
+                let resultHTML = `<p><strong>Student Name:</strong> ${student.StudentName}</p>
+                                  <p><strong>Registration Number:</strong> ${student.RollNo}</p>
+                                  <p><strong>Year:</strong> ${student.Year}</p>
+                                  <p><strong>Favorite Celebrity:</strong> ${student.FC}</p>
+                                  <p><strong>Sports Skill:</strong> ${student.Sports}</p>
+                                  <p><strong>Total Marks:</strong> ${student.TotalMarks}</p>
+                                  <p><strong>Category:</strong> ${student.CATEGORY}</p>`;
+                resultContainer.innerHTML = resultHTML;
+                resultContainer.classList.remove("hidden");
+            } else {
+                resultContainer.innerHTML = `<p>Student with Registration Number ${regNo} not found.</p>`;
+                resultContainer.classList.remove("hidden");
+            }
+        }
+    </script>
+</body>
+</html>
